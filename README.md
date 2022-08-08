@@ -34,7 +34,8 @@ logger.info(test_dict)
 logger.info(rmdc.search_dicts_in_dict(test_dict))
 
 ## search and find dictionaries, lists and tuples
-some_dictionaries, some_lists, some_tuples = rmdc.search_dictionaries_lists_tuples_in_dict(test_dict)
+some_dictionaries, some_lists, some_tuples = \
+      rmdc.search_dictionaries_lists_tuples_in_dict(test_dict)
 
 ## print all
 logger.info(some_dictionaries)
