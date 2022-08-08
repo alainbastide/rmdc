@@ -6,7 +6,9 @@
 </style> -->
 
 
-# Really Minimalist Dictionary Converter
+# Really Minimalist Dictionary Converter to SqLite
+
+[![Github All Releases](https://img.shields.io/github/downloads/alainbastide/rmdc/total.svg)]()
 
 This repository is a proof of concept for identifying lists, tuples and dictionaries in a given python dictionary. Python functions follow python dictionaries (dict) to dig.
 
@@ -59,3 +61,9 @@ INFO:__main__:['TF', 'TX', [[['BP'], 'RP'], 'RZ'], ['R']]
 INFO:__main__:[[['X']]]
 
 ```
+
+# TODO
+## Next ...
+ Automatic SQL commands 
+
+https://docs.travis-ci.com/user/languages/python/
