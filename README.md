@@ -1,9 +1,9 @@
-<style>
+<!-- <style>
   code {
     white-space : pre-wrap !important;
     word-break: break-word;
   }
-</style>
+</style> -->
 
 
 # Really Minimalist Dictionary Converter
@@ -24,7 +24,9 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 ## set a simple dict
-test_dict= {'TF':['H','V'],'TX':['1','2'],'A':1,'B': {'a' : {'W': {'Q':1,'BP':['CX','TX']}, 'X':('T1',8,7.4),'RP':['OX','PX']},'RZ':['BX','AX']}, 'WX': {'TT':1}, 'C':{'G':20,'R':['O','P']}}
+test_dict= {'TF':['H','V'],'TX':['1','2'],'A':1,'B': {'a' : {'W': {'Q':1,'BP':['CX','TX']}, \
+      'X':('T1',8,7.4),'RP':['OX','PX']},'RZ':['BX','AX']}, \
+      'WX': {'TT':1}, 'C':{'G':20,'R':['O','P']}}
 
 logger.info(test_dict)
 
@@ -46,7 +48,10 @@ Results in a terminal
 
 ```bash
 $ python3 test_mdc.py
-INFO:__main__:{'TF': ['H', 'V'], 'TX': ['1', '2'], 'A': 1, 'B': {'a': {'W': {'Q': 1, 'BP': ['CX', 'TX']}, 'X': ('T1', 8, 7.4), 'RP': ['OX', 'PX']}, 'RZ': ['BX', 'AX']}, 'WX': {'TT': 1}, 'C': {'G': 20, 'R': ['O', 'P']}}
+INFO:__main__:{'TF': ['H', 'V'], 'TX': ['1', '2'], 'A': 1, \
+       'B': {'a': {'W': {'Q': 1, 'BP': ['CX', 'TX']}, 'X': ('T1', 8, 7.4), \
+       'RP': ['OX', 'PX']}, 'RZ': ['BX', 'AX']}, 'WX': {'TT': 1}, \
+        'C': {'G': 20, 'R': ['O', 'P']}}
 INFO:__main__:[['B', [['a', [['W']]]]], ['WX'], ['C']]
 INFO:__main__:[['B', [['a', [['W']]]]], ['WX'], ['C']]
 INFO:__main__:['TF', 'TX', [[['BP'], 'RP'], 'RZ'], ['R']]
