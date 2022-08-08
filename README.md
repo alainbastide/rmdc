@@ -8,7 +8,7 @@
 
 # Really Minimalist Dictionary Converter
 
-This repository is a proof of concept for identifying lists, tuples and dictionaries in a given python dictionary.
+This repository is a proof of concept for identifying lists, tuples and dictionaries in a given python dictionary. Python functions follow python dictionaries (dict) to dig
 
 The code can be improved or integrated into other code to perform more complex operations based on python-specific type detection.
 
