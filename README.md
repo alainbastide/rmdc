@@ -17,7 +17,7 @@ The code can be improved or integrated into other code to perform more complex o
 
 import logging
 
-import converter as rmdc
+import searchers as rmdc
 
 
 logging.basicConfig(level=logging.INFO)

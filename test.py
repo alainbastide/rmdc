@@ -1,6 +1,6 @@
 import logging
 
-import converter as rmdc
+import searchers as rmdc
 
 
 logging.basicConfig(level=logging.INFO)
