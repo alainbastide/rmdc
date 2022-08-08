@@ -42,7 +42,7 @@ logger.info(some_lists)
 logger.info(some_tuples)
 ```
 
-Results
+Results in a terminal
 
 ```bash
 $ python3 test_mdc.py
