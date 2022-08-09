@@ -8,11 +8,17 @@
 
 # Really Minimalist Dictionary Converter to SqLite
 
-[![Github All Releases](https://img.shields.io/github/downloads/alainbastide/rmdc/total.svg)]()
+[![Github All Releases](https://img.shields.io/github/downloads/alainbastide/rmdc/total.svg)]() Release will come soon
 
 This repository is a proof of concept for identifying lists, tuples and dictionaries in a given python dictionary. Python functions follow python dictionaries (dict) to dig.
 
 The code can be improved or integrated into other code to perform more complex operations based on python-specific type detection.
+
+The second part of the code consists in the production of SQL codes to produce an elementary SQL structure and include data in this structure.
+
+## First step : Really Minimalist Dictionary Converter
+Identify the data structure of the given dictionary.
+
 
 ```python
 #!/usr/bin/env python3
@@ -25,10 +31,15 @@ import searchers as rmdc
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+
+class test_class:
+    def __init__(self):
+        pass
+
 ## set a simple dict
 test_dict= {'TF':['H','V'],'TX':['1','2'],'A':1,'B': {'a' : {'W': {'Q':1,'BP':['CX','TX']}, \
-      'X':('T1',8,7.4),'RP':['OX','PX']},'RZ':['BX','AX']}, \
-      'WX': {'TT':1}, 'C':{'G':20,'R':['O','P']}}
+    'X':('T1',8,7.4),'RP':['OX','PX']},'RZ':['BX','AX']},'SST': 'Mikado', \
+    'WX': {'TT':1}, 'ZZ':5.6, 'C':{'G':20,'R':['O','P']},'U':8.4, 'ZS': test_class()}
 
 logger.info(test_dict)
 
@@ -37,7 +48,7 @@ logger.info(rmdc.search_dicts_in_dict(test_dict))
 
 ## search and find dictionaries, lists and tuples
 some_dictionaries, some_lists, some_tuples = \
-      rmdc.search_dictionaries_lists_tuples_in_dict(test_dict)
+    rmdc.search_dictionaries_lists_tuples_in_dict(test_dict)
 
 ## print all
 logger.info(some_dictionaries)
@@ -51,19 +62,26 @@ Results in a terminal
 
 ```bash
 $ python3 test_mdc.py
-INFO:__main__:{'TF': ['H', 'V'], 'TX': ['1', '2'], 'A': 1, \
-       'B': {'a': {'W': {'Q': 1, 'BP': ['CX', 'TX']}, 'X': ('T1', 8, 7.4), \
-       'RP': ['OX', 'PX']}, 'RZ': ['BX', 'AX']}, 'WX': {'TT': 1}, \
-        'C': {'G': 20, 'R': ['O', 'P']}}
+INFO:__main__:{'TF': ['H', 'V'], 'TX': ['1', '2'], 'A': 1, 'B': {'a': {'W': {'Q': 1, 'BP': ['CX', 'TX']}, 'X': ('T1', 8, 7.4), 'RP': ['OX', 'PX']}, 'RZ': ['BX', 'AX']}, 'SST': 'Mikado', 'WX': {'TT': 1}, 'ZZ': 5.6, 'C': {'G': 20, 'R': ['O', 'P']}, 'U': 8.4, 'ZS': <__main__.test_class object at 0x7fa948bdffd0>}
 INFO:__main__:[['B', [['a', [['W']]]]], ['WX'], ['C']]
+INFO:searchers:[]:1<class 'int'>INTEGER Found
+INFO:searchers:['B', 'a', 'W']:1<class 'int'>INTEGER Found
+INFO:searchers:['B', 'a', 'W']:Mikado<class 'str'>STRING Found
+INFO:searchers:['B', 'a', 'W', 'WX']:1<class 'int'>INTEGER Found
+INFO:searchers:['B', 'a', 'W', 'WX']:5.6<class 'float'>REAL Found
+INFO:searchers:['B', 'a', 'W', 'WX', 'C']:20<class 'int'>INTEGER Found
+INFO:searchers:['B', 'a', 'W', 'WX', 'C']:8.4<class 'float'>REAL Found
+WARNING:searchers:['B', 'a', 'W', 'WX', 'C']:<__main__.test_class object at 0x7fa948bdffd0><class '__main__.test_class'>Unsupported format
 INFO:__main__:[['B', [['a', [['W']]]]], ['WX'], ['C']]
 INFO:__main__:['TF', 'TX', [[['BP'], 'RP'], 'RZ'], ['R']]
 INFO:__main__:[[['X']]]
 
-```
 
-# TODO
-## Next ...
+```
+## Second step : produce SQL commands
+Basic SQL generator to create SQL data structure and data inclusion.
+
+### Next ...
  Automatic SQL commands 
 
 https://docs.travis-ci.com/user/languages/python/

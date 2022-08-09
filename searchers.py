@@ -1,4 +1,10 @@
-def search_dicts_in_dict(a_dictionary):
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+
+def search_dicts_in_dict(a_dictionary,skey=[]):
     """ Dig in a dictionary to search and find all dictionaries
     
     Parameters
@@ -7,7 +13,7 @@ def search_dicts_in_dict(a_dictionary):
 
     Returns
     ----------
-    result : a list build like a tree in which we find  ditionaries
+    result : a list built like a tree in which we find  ditionaries
 
     Example : 
      ----------
@@ -28,17 +34,17 @@ def search_dicts_in_dict(a_dictionary):
     """    
     result = []
     for key in a_dictionary.keys():
-        selected_key = a_dictionary[key]
-        if type(selected_key) is dict :
+        selected_value = a_dictionary[key]
+        if type(selected_value) is dict :
             found_key = [key]
             result.append(found_key)
             
-            rerun = search_dicts_in_dict(selected_key)
+            rerun = search_dicts_in_dict(selected_value,key)
             if rerun != [] : found_key.append(rerun)
     
     return result  
 
-def search_dictionaries_lists_tuples_in_dict(a_dictionary):
+def search_dictionaries_lists_tuples_in_dict(a_dictionary,skey=[]):
     """ Dig in a dictionary to search and find all dictionaries, lists and tuples
     
     Parameters
@@ -47,9 +53,9 @@ def search_dictionaries_lists_tuples_in_dict(a_dictionary):
 
     Returns
     ----------
-    result_dict : a list build like a tree in which we find  ditionaries
-    result_list : a list build like a tree in which we find  ditionaries
-    result_tuple : a list build like a tree in which we find  ditionaries
+    result_dict : a list built like a tree in which we find  ditionaries
+    result_list : a list built like a tree in which we find  ditionaries
+    result_tuple : a list built like a tree in which we find  ditionaries
 
     Example : 
     ----------
@@ -75,20 +81,26 @@ def search_dictionaries_lists_tuples_in_dict(a_dictionary):
     ----------
     INFO:__main__:{'C': {'G': 20, 'R': ['O', 'P']}}
     INFO:__main__:[['C']]
+    INFO:searchers:['C']:20<class 'int'>INTEGER Found
     INFO:__main__:[['C']]
     INFO:__main__:[['R']]
-    INFO:__main__:[]   
+    INFO:__main__:[]  
     """
     result_dict = []
     result_list = []
     result_tuple = []
+
     for key in a_dictionary.keys():
-        selected_key = a_dictionary[key]
-        if type(selected_key) is dict :
+        selected_value = a_dictionary[key]
+        if type(selected_value) is dict :
             found_key = [key]
             result_dict.append(found_key)
 
-            rerun,lists,tuples = search_dictionaries_lists_tuples_in_dict(selected_key)
+            # digger
+            # recursion is not infinite
+            skey.append(key)
+            rerun,lists,tuples = \
+                search_dictionaries_lists_tuples_in_dict(selected_value,skey)
             
             if rerun != [] : 
                 found_key.append(rerun)  
@@ -98,10 +110,23 @@ def search_dictionaries_lists_tuples_in_dict(a_dictionary):
                 
             if tuples!=[]:
                 result_tuple.append(tuples)
+            
                 
-        if type(selected_key) is list: 
+        elif type(selected_value) is list: 
             result_list.append(key)
-        if type(selected_key) is tuple: 
+        elif type(selected_value) is tuple: 
             result_tuple.append(key)
+        elif type(selected_value) is int:
+            logger.info(str(skey) + str(':') + str(selected_value) + str(type(selected_value)) + \
+                'INTEGER Found')
+        elif type(selected_value) is str:
+            logger.info(str(skey) + str(':') + str(selected_value) + str(type(selected_value))+ \
+                'STRING Found')
+        elif type(selected_value) is float:
+            logger.info(str(skey) + str(':') + str(selected_value) + str(type(selected_value)) + \
+                'REAL Found')
+        else :
+            logger.warning(str(skey) + str(':') + str(selected_value) + str(type(selected_value)) + \
+                'Unsupported format')
         
     return result_dict,result_list,result_tuple
