@@ -62,19 +62,24 @@ Results in a terminal
 
 ```bash
 $ python3 test_mdc.py
-INFO:__main__:{'TF': ['H', 'V'], 'TX': ['1', '2'], 'A': 1, 'B': {'a': {'W': {'Q': 1, 'BP': ['CX', 'TX']}, 'X': ('T1', 8, 7.4), 'RP': ['OX', 'PX']}, 'RZ': ['BX', 'AX']}, 'SST': 'Mikado', 'WX': {'TT': 1}, 'ZZ': 5.6, 'C': {'G': 20, 'R': ['O', 'P']}, 'U': 8.4, 'ZS': <__main__.test_class object at 0x7fa948bdffd0>}
+INFO:__main__:{'test_dict': {'TF': ['H', 'V'], 'TX': ['1', '2'], 'A': 1, 
+        'B': {'a': {'W': {'Q': 1, 'BP': ['CX', 'TX']}, 'X': ('T1', 8, 7.4), 
+        'RP': ['OX', 'PX']}, 'RZ': ['BX', 'AX']}, 'SST': 'Mikado', 
+        'WX': {'TT': 1}, 'ZZ': 5.6, 'C': {'G': 20, 'R': ['O', 'P']}, 
+        'U': 8.4, 'ZS': <__main__.test_class object at 0x7f340bc77fd0>}}
 INFO:__main__:[['B', [['a', [['W']]]]], ['WX'], ['C']]
-INFO:searchers:[]:1<class 'int'>INTEGER Found
-INFO:searchers:['B', 'a', 'W']:1<class 'int'>INTEGER Found
-INFO:searchers:['B', 'a', 'W']:Mikado<class 'str'>STRING Found
-INFO:searchers:['B', 'a', 'W', 'WX']:1<class 'int'>INTEGER Found
-INFO:searchers:['B', 'a', 'W', 'WX']:5.6<class 'float'>REAL Found
-INFO:searchers:['B', 'a', 'W', 'WX', 'C']:20<class 'int'>INTEGER Found
-INFO:searchers:['B', 'a', 'W', 'WX', 'C']:8.4<class 'float'>REAL Found
-WARNING:searchers:['B', 'a', 'W', 'WX', 'C']:<__main__.test_class object at 0x7fa948bdffd0><class '__main__.test_class'>Unsupported format
-INFO:__main__:[['B', [['a', [['W']]]]], ['WX'], ['C']]
-INFO:__main__:['TF', 'TX', [[['BP'], 'RP'], 'RZ'], ['R']]
-INFO:__main__:[[['X']]]
+INFO:searchers:[]:A:1<class 'int'>INTEGER Found
+INFO:searchers:['B', 'a', 'W']:Q:1<class 'int'>INTEGER Found
+INFO:searchers:['B', 'a', 'W']:SST:Mikado<class 'str'>STRING Found
+INFO:searchers:['B', 'a', 'W', 'WX']:TT:1<class 'int'>INTEGER Found
+INFO:searchers:['B', 'a', 'W', 'WX']:ZZ:5.6<class 'float'>REAL Found
+INFO:searchers:['B', 'a', 'W', 'WX', 'C']:G:20<class 'int'>INTEGER Found
+INFO:searchers:['B', 'a', 'W', 'WX', 'C']:U:8.4<class 'float'>REAL Found
+WARNING:searchers:['B', 'a', 'W', 'WX', 'C']:ZS:<__main__.test_class 
+        object at 0x7f340bc77fd0><class '__main__.test_class'>Unsupported format
+INFO:__main__:{'some_dictionaries': [['B', [['a', [['W']]]]], ['WX'], ['C']]}
+INFO:__main__:{'some_lists': ['TF', 'TX', [[['BP'], 'RP'], 'RZ'], ['R']]}
+INFO:__main__:{'some_tuples': [[['X']]]}
 
 
 ```

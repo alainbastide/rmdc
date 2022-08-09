@@ -79,12 +79,12 @@ def search_dictionaries_lists_tuples_in_dict(a_dictionary,skey=[]):
 
     Results : 
     ----------
-    INFO:__main__:{'C': {'G': 20, 'R': ['O', 'P']}}
+    INFO:__main__:{'test_dict': {'C': {'G': 20, 'R': ['O', 'P']}}}
     INFO:__main__:[['C']]
-    INFO:searchers:['C']:20<class 'int'>INTEGER Found
-    INFO:__main__:[['C']]
-    INFO:__main__:[['R']]
-    INFO:__main__:[]  
+    INFO:searchers:['C']:G:20<class 'int'>INTEGER Found
+    INFO:__main__:{'some_dictionaries': [['C']]}
+    INFO:__main__:{'some_lists': [['R']]}
+    INFO:__main__:{'some_tuples': []}
     """
     result_dict = []
     result_list = []
@@ -117,16 +117,16 @@ def search_dictionaries_lists_tuples_in_dict(a_dictionary,skey=[]):
         elif type(selected_value) is tuple: 
             result_tuple.append(key)
         elif type(selected_value) is int:
-            logger.info(str(skey) + str(':') + str(selected_value) + str(type(selected_value)) + \
+            logger.info(str(skey) + str(':') + str(key)  + str(':')  + str(selected_value) + str(type(selected_value)) + \
                 'INTEGER Found')
         elif type(selected_value) is str:
-            logger.info(str(skey) + str(':') + str(selected_value) + str(type(selected_value))+ \
+            logger.info(str(skey) + str(':') + str(key)  + str(':')  + str(selected_value) + str(type(selected_value))+ \
                 'STRING Found')
         elif type(selected_value) is float:
-            logger.info(str(skey) + str(':') + str(selected_value) + str(type(selected_value)) + \
+            logger.info(str(skey) + str(':') + str(key)  + str(':')  + str(selected_value) + str(type(selected_value)) + \
                 'REAL Found')
         else :
-            logger.warning(str(skey) + str(':') + str(selected_value) + str(type(selected_value)) + \
+            logger.warning(str(skey) + str(':') + str(key)  + str(':')  + str(selected_value) + str(type(selected_value)) + \
                 'Unsupported format')
         
     return result_dict,result_list,result_tuple
