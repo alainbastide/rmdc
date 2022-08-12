@@ -1,7 +1,7 @@
 import logging
 
 import searchers as rmdc
-
+import sqlformatter as sqlf
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -32,3 +32,15 @@ logger.info({'some_dictionaries':some_dictionaries})
 logger.info({'some_lists':some_lists})
 
 logger.info({'some_tuples':some_tuples})
+
+some_dictionaries, some_lists, some_tuples = \
+    sqlf.search_dictionaries_lists_tuples_in_dict_sql(test_dict)
+
+## print all
+logger.info({'some_dictionaries':some_dictionaries})
+
+logger.info({'some_lists':some_lists})
+
+logger.info({'some_tuples':some_tuples})
+
+
