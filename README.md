@@ -128,6 +128,12 @@ INFO:sqlformatter:DICT DATA handeled elsewhere before{'G': -10, 'R': ['T', 'd']}
 ERROR:sqlformatter:UNEXPECTED DATA<__main__.test_class object at 0x7ff84a3ebe80> <class '__main__.test_class'>
 WARNING:sqlformatter:TYPE UNKNOWN: {'TF': 'list', 'TX': 'list', 'A': 'int', 'B': 'dict', 'SST': 'str', 'WX': 'dict', 'ZZ': 'float', 'C': 'dict', 'U': 'float', 'ZS': 'test_class', 'FD': 'NoneType'}
 data_type_in_base_dictionary :  test_dict  :  {'TF': 'list', 'TX': 'list', 'A': 'int', 'B': 'dict', 'SST': 'str', 'WX': 'dict', 'ZZ': 'float', 'C': 'dict', 'U': 'float', 'ZS': 'test_class', 'FD': 'NoneType'}
+```
+
+
+
+SQL structure produced by the present code
+```sql
 INFO:__main__:
     DROP TABLE IF EXISTS 'B_table'; 
 
